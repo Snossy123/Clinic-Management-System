@@ -1,0 +1,41 @@
+
+package clinic;
+import clinic.*;
+
+public class Admin extends Person{
+    
+   
+    /* constractor*/
+        public Admin(int person_id, String person_name, String person_address, String person_mobile, String user_name, String user_password) {
+        super(person_id, person_name, person_address,person_mobile, user_name, user_password);
+    }
+    
+    //Add Doctor
+    public void Add_Doctor(Doctor d){
+        
+    }
+    
+    
+    //Add_Receptionist
+    public void Add_Receptionist(Receptionist r){
+        
+    }
+    
+    
+    //View Doctor 
+    /*public Doctor View_Doctor(){
+        return Doctor;
+    }*/
+    
+    //View Receptionist
+    /*public Receptionist View_Receptionist(){
+        return Receptionist;
+    }*/
+    
+    //View Patient
+    /*public Patient View_Patient(){
+        return Patient;
+    }*/
+    
+ 
+}

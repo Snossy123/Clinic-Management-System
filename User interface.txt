@@ -1,0 +1,12 @@
+package clinic;
+
+ public interface User 
+{
+    
+    // methods 
+   // abstract  protected void changepassword(String user_old_password ,String user_new_password);
+            void changepassword(String user_old_password ,String user_new_password);
+   // abstract protected void logout();
+             void logout();
+
+}
