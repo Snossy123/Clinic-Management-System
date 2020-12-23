@@ -1,0 +1,273 @@
+package javaapplication1;
+
+abstract public class Person 
+{ 
+    // private attributes
+    private int person_id;
+    private String person_name , person_address , person_mobile ;
+    private String user_name , user_password , user_old_password ,
+            user_new_password , user_repeat_new_password;
+
+   //  getter
+
+    public int getPerson_id()
+    {
+        return person_id;
+    }
+
+    public String getPerson_name()
+    {
+        return person_name;
+    }
+
+    public String getPerson_address() 
+    {
+        return person_address;
+    }
+
+    public String getPerson_mobile() 
+    {
+        return person_mobile;
+    }
+
+    public String getUser_name() {
+        return user_name;
+    }
+
+    public String getUser_password() {
+        return user_password;
+    }
+
+    
+    // setter
+
+    //Person_id
+    public void setPerson_id(int person_id) 
+    { 
+            if(person_id < 0)
+        {
+            System.out.println("invalid input for person_id , it must be positive numbers ");
+        }
+           else
+        {
+            this.person_id = person_id;
+        }
+    }
+    //Person_name
+    public void setPerson_name(String person_name) 
+    {
+         for(int i=0;i<person_name.length();++i)
+        {
+            if(person_name.charAt(i)=='@' ||person_name.charAt(i)=='#' || person_name.charAt(i)=='$'
+                   || person_name.charAt(i)=='%'||person_name.charAt(i)=='&' || person_name.charAt(i)=='*')
+            {
+             System.out.println("invalid input for person_name , it can't contine any special character ");
+             break;
+            }
+             else
+            {
+           this.person_name = person_name;
+            }
+        }
+        
+    }
+    //Person_address
+    public void setPerson_address(String person_address) 
+    {
+         for(int i=0;i<person_address.length();++i)
+        {
+            if(person_address.charAt(i)=='@' ||person_address.charAt(i)=='#' || person_address.charAt(i)=='$'
+                   || person_address.charAt(i)=='%'||person_address.charAt(i)=='&' || person_address.charAt(i)=='*')
+            {
+             System.out.println("invalid input for person_address , it can't contine any special character ");
+             break;
+            }
+             else
+            {
+            this.person_address = person_address;
+            }
+        }
+        
+    }
+    //Person_mobile
+    public void setPerson_mobile(String person_mobile) 
+    {
+        for(int i=0;i<person_mobile.length();++i)
+        {
+            if(person_mobile.charAt(i) < 0 || person_mobile.charAt(i) == '@' ||  person_mobile.charAt(i) == '$' || person_mobile.charAt(i) == '#'
+                    || person_mobile.charAt(i) == '%'|| person_mobile.charAt(i) == '&'|| person_mobile.charAt(i) == '*')
+                {
+                    System.out.println("invalid input for person_mobile , it must be positive numbers ");
+                    break;
+                }
+            else
+                {
+                    this.person_mobile = person_mobile;
+                }
+        }
+          
+    }
+    //User_name
+    public void setUser_name(String user_name)
+    {
+          for(int i=0;i<user_name.length();++i)
+        {
+            if(user_name.charAt(i)=='@' ||user_name.charAt(i)=='#' || user_name.charAt(i)=='$'
+                   || user_name.charAt(i)=='%'||user_name.charAt(i)=='&' || user_name.charAt(i)=='*')
+                {
+                 System.out.println("invalid input for user_name , it can't contine any special character ");
+                 break;
+                }
+             else
+                {
+                  this.user_name = user_name;
+                }
+        }
+    }
+//User_password
+    public void setUser_password(String user_password) {
+        this.user_password = user_password;
+    }
+   
+     // paramterized constructor
+   public Person(int person_id, String person_name, String person_address, String person_mobile,String user_name,String user_password)
+    { 
+        //person_id
+            if(person_id < 0)
+            {
+                System.out.println("invalid input for person_id , it must be positive numbers ");
+            }
+           else
+            {
+                this.person_id = person_id;
+            }
+            
+            //person_name
+            
+             for(int i=0;i<person_name.length();++i)
+            {
+                if(person_name.charAt(i)=='@' ||person_name.charAt(i)=='#' || person_name.charAt(i)=='$'
+                       || person_name.charAt(i)=='%'||person_name.charAt(i)=='&' || person_name.charAt(i)=='*')
+                    {
+                     System.out.println("invalid input for person_name , it can't contine any special character ");
+                     break;
+                    }
+                 else
+                    {
+                     this.person_name = person_name;
+                    }
+            }
+            //person_address
+              for(int i=0;i<person_address.length();++i)
+           {
+            if(person_address.charAt(i)=='@' ||person_address.charAt(i)=='#' || person_address.charAt(i)=='$'
+                   || person_address.charAt(i)=='%'||person_address.charAt(i)=='&' || person_address.charAt(i)=='*')
+                {
+                 System.out.println("invalid input for person_address , it can't contine any special character ");
+                 break;
+                }
+             else
+                {
+                this.person_address = person_address;
+                }
+            }
+      
+              //person_mobile
+              for(int i=0;i<person_mobile.length();++i)
+            {
+                if(person_mobile.charAt(i) < 0 || person_mobile.charAt(i) == '@' ||  person_mobile.charAt(i) == '$' || person_mobile.charAt(i) == '#'
+                        || person_mobile.charAt(i) == '%'|| person_mobile.charAt(i) == '&'|| person_mobile.charAt(i) == '*')
+                    {
+                        System.out.println("invalid input for person_mobile , it must be positive numbers ");
+                        break;
+                    }
+                else
+                    {
+                        this.person_mobile = person_mobile;
+                    }
+           }
+              //user_name
+          for(int i=0;i<user_name.length();++i)
+            {
+                if(user_name.charAt(i)=='@' ||user_name.charAt(i)=='#' || user_name.charAt(i)=='$'
+                       || user_name.charAt(i)=='%'||user_name.charAt(i)=='&' || user_name.charAt(i)=='*')
+                    {
+                     System.out.println("invalid input for user_name , it can't contine any special character ");
+                     break;
+                    }
+                 else
+                    {
+                      this.user_name = user_name;
+                    }
+            }
+        this.user_password = user_password;
+    }
+// client paramterized constructor
+    public Person(int person_id,String person_name, String person_address, String person_mobile) 
+    {
+      //person_id
+            if(person_id < 0)
+            {
+                System.out.println("invalid input for person_id , it must be positive numbers ");
+            }
+           else
+            {
+                this.person_id = person_id;
+            }
+            
+            //person_name
+            
+             for(int i=0;i<person_name.length();++i)
+            {
+                if(person_name.charAt(i)=='@' ||person_name.charAt(i)=='#' || person_name.charAt(i)=='$'
+                       || person_name.charAt(i)=='%'||person_name.charAt(i)=='&' || person_name.charAt(i)=='*')
+                    {
+                     System.out.println("invalid input for person_name , it can't contine any special character ");
+                     break;
+                    }
+                 else
+                    {
+                     this.person_name = person_name;
+                    }
+            }
+            //person_address
+              for(int i=0;i<person_address.length();++i)
+           {
+            if(person_address.charAt(i)=='@' ||person_address.charAt(i)=='#' || person_address.charAt(i)=='$'
+                   || person_address.charAt(i)=='%'||person_address.charAt(i)=='&' || person_address.charAt(i)=='*')
+                {
+                 System.out.println("invalid input for person_address , it can't contine any special character ");
+                 break;
+                }
+             else
+                {
+                this.person_address = person_address;
+                }
+            }
+      
+              //person_mobile
+              for(int i=0;i<person_mobile.length();++i)
+            {
+                if(person_mobile.charAt(i) < 0 || person_mobile.charAt(i) == '@' ||  person_mobile.charAt(i) == '$' || person_mobile.charAt(i) == '#'
+                        || person_mobile.charAt(i) == '%'|| person_mobile.charAt(i) == '&'|| person_mobile.charAt(i) == '*')
+                    {
+                        System.out.println("invalid input for person_mobile , it must be positive numbers ");
+                        break;
+                    }
+                else
+                    {
+                        this.person_mobile = person_mobile;
+                    }
+           }
+         
+    }
+
+   public void changepassword(String user_old_password ,String user_new_password)
+{
+    user_old_password = user_new_password;
+}
+ public void logout()
+ {
+     // will write by GUI 
+ }
+}
