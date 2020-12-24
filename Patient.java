@@ -24,8 +24,8 @@ public class Patient extends Person {
     private float medicine_price;
     private float Cost;
     
-    public Patient(int person_id, String person_name, String person_address, String user_name) {
-        super(person_id, person_name, person_address, user_name);
+    public Patient(String Name,String ID,String Address, String mobile,String Email) {
+        super(Name, ID, Address, mobile, Email);
     }
 
     public void setDate(String date) {
@@ -122,7 +122,7 @@ public class Patient extends Person {
             System.out.println("No");
        }
        
-       System.out.println("Number residency days: ");
+       System.out.println("Number of residency days: ");
        System.out.println(this.getNumber_residency_days());
        }
     
