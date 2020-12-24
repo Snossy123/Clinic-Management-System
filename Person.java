@@ -14,16 +14,14 @@ public abstract class Person {
     private final String ID;
     private String Address;
     private String Email;
-    private String[] phoneNumber;
-    private int Age;
+    private String mobile;
+   
     
-    public Person(String Name,String ID,String Address,int Age,String[] phoneNumber,String Email){
+    public Person(String Name,String ID,String Address ,String mobile,String Email){
         this.Name=Name;
         this.ID=ID;
         this.Address=Address;
-        this.Age=Age;
-        this.phoneNumber[0]=phoneNumber[0];
-        this.phoneNumber[1]=phoneNumber[1];
+        this.mobile=mobile;
         this.Email=Email;
     }
     public String getName() {
@@ -39,19 +37,16 @@ public abstract class Person {
     public void setAddress(String Address){
         this.Address=Address;
     }
-    public int getAge() {
-        return Age;
+
+    public String getMobile() {
+        return mobile;
     }
-    public void setAge(int Age){
-        this.Age=Age;
+
+    public void setMobile(String mobile) {
+        this.mobile = mobile;
     }
-    public String[] getPhoneNumber(){
-        return this.phoneNumber;
-    }
-    public void setPhoneNumber(String[] phoneNumber){
-        this.phoneNumber[0]=phoneNumber[0];
-        this.phoneNumber[1]=phoneNumber[1];
-    }
+    
+     
     public String getEmail(){
         return this.Email;
     }

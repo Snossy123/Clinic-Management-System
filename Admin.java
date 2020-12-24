@@ -9,12 +9,11 @@
  * @author Seif
  */
 public class Admin extends Person implements User {
-    private String Salary;
+    
     private String Password;
     
-    public Admin(String Name,String ID,String Address,int Age,String[] phoneNumber,String Email,String Salary,String Password){
-        super( Name, ID, Address, Age, phoneNumber, Email);
-        this.Salary=Salary;
+    public Admin(String Name,String ID,String Address, String mobile,String Email,String Password){
+        super( Name, ID, Address, mobile, Email);
         this.Password=Password;
     }
 
