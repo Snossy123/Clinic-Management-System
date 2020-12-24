@@ -8,12 +8,11 @@
  *
  * @author Seif
  */
-public class Receptionist extends Person implements User{
-        private String Salary;
-        private String Password;
-        
-        
-        public Receptionist(String Name,String ID,String Address,int Age,String[] phoneNumber,String Email,String Salary,String Password){
+public class Admin extends Person implements User {
+    private String Salary;
+    private String Password;
+    
+    public Admin(String Name,String ID,String Address,int Age,String[] phoneNumber,String Email,String Salary,String Password){
         super( Name, ID, Address, Age, phoneNumber, Email);
         this.Salary=Salary;
         this.Password=Password;
@@ -30,4 +29,6 @@ public class Receptionist extends Person implements User{
     public void logout() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+
 }

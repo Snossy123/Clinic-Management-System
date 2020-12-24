@@ -3,38 +3,40 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package clinic;
 
 /**
  *
- * @author Alkhtat
+ * @author Seif
  */
-public class Doctor extends Person {
-
-    public Doctor(int person_id, String person_name, String person_address, String person_mobile, String user_name, String user_password) {
-        super(person_id, person_name, person_address, person_mobile, user_name, user_password);
+public class Doctor extends Person implements User{
+    private float Salary;
+    private final String Specialization;
+    private String Password;
+    public Doctor(String Name,String ID,String Address,int Age,String[] phoneNumber,String Email,float Salary,String Specialization,String Password){
+        super(Name,ID,Address,Age,phoneNumber,Email);
+        this.Salary=Salary;
+        this.Specialization=Specialization;
+        this.Password=Password;
+    }
+    public float getSalary(){
+        return this.Salary;
+    }
+    public void setSalary(float Salary){
+        this.Salary=Salary;
+    }
+    public String getSpecialization(){
+        return this.Specialization;
     }
 
-    public void Describe_medicine(Patient patient, String medicine){
-        patient.setDescribe_medicine(medicine);
-        patient.reset_token_id();
+    @Override
+    public void ChangePassword(String userOldPassword, String userNewPassword) {
+        if(userOldPassword.equals(this.Password)){
+            this.Password=userNewPassword;
+        }
     }
-    
-    public void Write_disease(Patient patient, String disease){
-        patient.set_disease(disease);
+
+    @Override
+    public void logout() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
-    public void need_bed(Patient patient, Boolean bed){
-        patient.setNeed_bed(bed);
-    }
-    
-    public void Number_residency_days(Patient patient, int Number_residency_days){
-        patient.setNumber_residency_days(Number_residency_days);
-    }
-     //veiw patient inline
-    public void viewpatient() {
-        
-    }   
-    
-    
 }
