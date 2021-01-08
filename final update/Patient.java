@@ -123,23 +123,6 @@ public class Patient extends Person{
         this.setToken_id(0);
     }
     
-   public void viewprescription()
-       {
-      System.out.println("Date : ");
-       System.out.println(this.getDate());
-       
-       System.out.println("Describe medicine: ");
-       System.out.println(this.getDescribe_medicine());
-       
-       System.out.println("Need bed: ");
-       if(this.getNeed_bed()){
-           System.out.println("Yes");
-       }else{
-            System.out.println("No");
-       }
-       
-       System.out.println("Number of residency days: ");
-       //System.out.println(this.getNumber_residency_days());
-       }  
-    }
+  
+   }
     
