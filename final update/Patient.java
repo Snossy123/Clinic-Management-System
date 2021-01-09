@@ -8,7 +8,7 @@ package clinic;
 import java.sql.Date;
 
 public class Patient extends Person{
-       
+    private int patient_id;
     private Date date;
     private int token_id;
     private int doctor_id;
@@ -21,8 +21,8 @@ public class Patient extends Person{
     private float Cost;
     
             /* constractor*/
-        public Patient(int person_id, String person_name, String person_mobile, String person_address , int doctor_id , int token_id  ,Date  date ) {
-        super(person_id, person_name, person_address,person_mobile);
+        public Patient( String person_name, String person_mobile, String person_address , int doctor_id , int token_id  ,Date  date ) {
+        super( person_name, person_address,person_mobile);
         this.token_id=token_id;
         this.doctor_id=doctor_id;
         this.date = date;
@@ -122,7 +122,16 @@ public class Patient extends Person{
     public void reset_token_id(){
         this.setToken_id(0);
     }
-    
+
+    public int getPatient_id() {
+        return patient_id;
+    }
+
+    public void setPatient_id(int patient_id) {
+        this.patient_id = patient_id;
+    }
+
+     
   
    }
     

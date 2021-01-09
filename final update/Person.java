@@ -5,8 +5,7 @@ import javax.swing.*;
 abstract public class Person extends JFrame
 { 
     // private attributes
-    private int person_id;
-    private String person_name , person_address , person_mobile ;
+     private String person_name , person_address , person_mobile ;
 
    //  getter
 
@@ -14,11 +13,7 @@ abstract public class Person extends JFrame
     {
     }
 
-    public int getPerson_id() {
-        return person_id;
-    }
-
-    public String getPerson_name()
+     public String getPerson_name()
     {
         return person_name;
     }
@@ -35,19 +30,7 @@ abstract public class Person extends JFrame
     
     // setter
 
-    //Person_id
-    public void setPerson_id(int person_id) 
-    { 
-            if(person_id < 0)
-        {
-            System.out.println("invalid input for person_id , it must be positive numbers ");
-        }
-           else
-        {
-            this.person_id = person_id;
-        }
-    }
-    //Person_name
+   //Person_name
     public void setPerson_name(String person_name) 
     {
          for(int i=0;i<person_name.length();++i)
@@ -102,19 +85,9 @@ abstract public class Person extends JFrame
           
     }
         // paramterized constructor
-   public Person(int person_id, String person_name, String person_address, String person_mobile)
+   public Person( String person_name, String person_address, String person_mobile)
     { 
-        //person_id
-            if(person_id < 0)
-            {
-                System.out.println("invalid input for person_id , it must be positive numbers ");
-            }
-           else
-            {
-                this.person_id = person_id;
-            }
-            
-            //person_name
+          //person_name
             
              for(int i=0;i<person_name.length();++i)
             {

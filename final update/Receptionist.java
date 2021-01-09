@@ -37,9 +37,10 @@ public class Receptionist extends Person implements User{
 
    //valiables local 
     private String user_name, user_password;
+    private int ReceptionId;
     /* constractor  this constructor to make a new receptionist */
-    public Receptionist(int person_id, String person_name, String person_mobile, String person_address, String user_name, String user_password) throws SQLException {
-    super(person_id, person_name, person_address,person_mobile);
+    public Receptionist(String person_name, String person_mobile, String person_address, String user_name, String user_password) throws SQLException {
+    super( person_name, person_address,person_mobile);
     this.user_name = user_name;
     this.user_password = user_password;
     }
@@ -54,7 +55,18 @@ public class Receptionist extends Person implements User{
     frame.setLocation(400, 120);
     frame.setResizable(false);
     frame.setLayout(null);
-        
+        //profile image
+            JLabel profile = new JLabel(""+user_name);//create label and set text with username
+            profile.setBounds(150, 30, 170, 150);//set bound of label
+            ImageIcon icon = new ImageIcon("reception.png");//image of profile
+            profile.setHorizontalTextPosition(JLabel.CENTER);//position of words accordding image left or right or center
+            profile.setVerticalTextPosition(JLabel.BOTTOM);//position of words accordding image top or bottom
+            profile.setIconTextGap(20);//gap bettween image and text 
+
+            Image img = icon.getImage();//convert ImageIcon to image to deal with her scale
+            Image ImgScale = img.getScaledInstance(profile.getWidth(), profile.getHeight()-50, img.SCALE_SMOOTH);//set image scale 
+            ImageIcon Imageicon = new ImageIcon(ImgScale);//return to original state ImageIco
+            profile.setIcon(Imageicon);//set lable (profile) imgIcon of it
         //buttons  are used in frame Receptionist
             // button change password
                 JButton b1 = new JButton("Change Password");
@@ -70,7 +82,7 @@ public class Receptionist extends Person implements User{
                 JButton b3 = new JButton("Add Patient");
                 b3.setForeground(Color.MAGENTA);
                 b3.setFont(new Font("Arial", Font.BOLD, 14));
-                b3.setBounds(150, 50, 200, 30);
+                b3.setBounds(150, 200, 200, 30);
             // button submit in frame2 (Add patient) 
                 JButton b4 = new JButton("Submit");
                 b4.setForeground(Color.MAGENTA);
@@ -83,16 +95,17 @@ public class Receptionist extends Person implements User{
                 JButton b6 = new JButton("View patient");
                 b6.setForeground(Color.MAGENTA);
                 b6.setFont(new Font("Arial", Font.BOLD, 14));
-                b6.setBounds(150, 120, 200, 30);
+                b6.setBounds(150, 250, 200, 30);
             // button patient Inline 
                 JButton b7 = new JButton("patient Inline");
                 b7.setForeground(Color.MAGENTA);
                 b7.setFont(new Font("Arial", Font.BOLD, 14));
+                b7.setBounds(150, 300, 200, 30);
             // button View Prescription
                 JButton b8 = new JButton("View Prescription");
                 b8.setFont(new Font("Arial", Font.BOLD, 14));
                 b8.setForeground(Color.MAGENTA);
-                b8.setBounds(150, 260, 200, 30);
+                b8.setBounds(150, 350, 200, 30);
             // button patient inline
                 JButton b444 = new JButton("View");
                 b444.setForeground(Color.MAGENTA);
@@ -223,6 +236,7 @@ public class Receptionist extends Person implements User{
                                              insert_pat(pat);
                                              //insert patient in table patient in database
                                              insert_tokenline(retrive_patient_id() ,  pat.getDoctor_id());
+                                             update_tokenId (retrive_token_id(),retrive_patient_id());
                                             //set the values of textfields
                                              t2.setText("");t3.setText("");t4.setText(""); t6.setText("");t7.setText("");
                                     }
@@ -340,7 +354,7 @@ public class Receptionist extends Person implements User{
                 frame3.setLocation(400, 120);
                 frame3.setResizable(false);
                 frame3.setLayout(null);
-                //btn view patient
+                //btn view patient action
                     b6.addActionListener(new ActionListener(){
                     @Override
                     public void actionPerformed(ActionEvent e){
@@ -356,7 +370,7 @@ public class Receptionist extends Person implements User{
                               //date of patient from datebase
                               Patient pat = retrive_data_patient(x);
                               //Show data of patient 
-                              t11.setText(""+pat.getPerson_id());
+                              t11.setText(""+pat.getPatient_id());
                               t22.setText(""+pat.getPerson_name());
                               t44.setText(""+pat.getPerson_mobile());
                               t33.setText(""+pat.getPerson_address());
@@ -371,7 +385,7 @@ public class Receptionist extends Person implements User{
                               JOptionPane.showMessageDialog(frame3, "Successfully Submit", "Successful", JOptionPane.PLAIN_MESSAGE);
                               textsearch.setText("");
                                 }
-                             }
+                               } 
                         });
 
                         //btn back
@@ -424,7 +438,6 @@ public class Receptionist extends Person implements User{
                 frame5.setResizable(false);
                 frame5.setLayout(null);
             //inline action
-                b7.setBounds(150, 190, 200, 30);
                 b7.addActionListener(new ActionListener(){
                 @Override
                 public void actionPerformed(ActionEvent e){
@@ -629,28 +642,32 @@ public class Receptionist extends Person implements User{
             });
     
     //add components to Receptionist frame            
-    frame.add(b1);frame.add(b2);frame.add(b3);frame.add(b6);
+    frame.add(profile);frame.add(b1);frame.add(b2);frame.add(b3);frame.add(b6);
     frame.setVisible(true);frame.add(b7);frame.add(b8);
 }
-
     
+   
+
 //setter and getter functions
     //User_name
-    public void setUser_name(String user_name)  {
-             for(int i=0;i<user_name.length();++i)
-           {
-               if(user_name.charAt(i)=='@' ||user_name.charAt(i)=='#' || user_name.charAt(i)=='$'
-                      || user_name.charAt(i)=='%'||user_name.charAt(i)=='&' || user_name.charAt(i)=='*')
-                   {
-                    System.out.println("invalid input for user_name , it can't contine any special character ");
-                    break;
-                   }
-                else
-                   {
-                     this.user_name = user_name;
-                   }
-           }
-       }
+    public void setReceptionId(int ReceptionId) {
+        this.ReceptionId = ReceptionId;
+    }
+    public void setUser_name(String user_name) {
+        for(int i=0;i<user_name.length();++i)
+        {
+            if(user_name.charAt(i)=='@' ||user_name.charAt(i)=='#' || user_name.charAt(i)=='$'
+                    || user_name.charAt(i)=='%'||user_name.charAt(i)=='&' || user_name.charAt(i)=='*')
+            {
+                System.out.println("invalid input for user_name , it can't contine any special character ");
+                break;
+            }
+            else
+            {
+                this.user_name = user_name;
+            }
+        }
+    }
     public void setUser_password(String user_password) {
         this.user_password = user_password;
     }
@@ -660,6 +677,9 @@ public class Receptionist extends Person implements User{
     public String getUser_password() {
         return user_password;
     }
+    public int getReceptionId()  {
+        return ReceptionId;
+       }
     
 //another functions
     //functions calculate Total cost
@@ -671,6 +691,8 @@ public class Receptionist extends Person implements User{
       patient.setResources_charges(Resources_charges);
   }
 
+    
+    
 //functions insert in datebase
     private void insert_pat(Patient p1){
           if( p1.getName().equals("") || p1.getPerson_address().equals("")|| p1.getPerson_mobile().equals("") || p1.getDate().equals("")){
@@ -744,7 +766,22 @@ public class Receptionist extends Person implements User{
        }
 
     }
-   
+    private void  update_tokenId (int token_id,int patient_id){
+        try{
+         
+        String update = "UPDATE patient SET token_id = ? WHERE id = ?"; 
+     // create the java statement
+     PreparedStatement pst = fun().prepareStatement(update);
+     pst.setInt(1,token_id);
+     pst.setInt(2, patient_id);
+     pst.executeUpdate();
+     fun().close();
+     }
+    catch(SQLException e){
+       JOptionPane.showMessageDialog(null, e);
+    }
+    
+    }
 // functions retrive date from datebase
     private Patient retrive_data_patient( int id_patient){
          Patient pat = null; 
@@ -755,16 +792,18 @@ public class Receptionist extends Person implements User{
         // execute the query,
             ResultSet rs = pst.executeQuery(search); 
              //data to be displayed in the table
-           while (rs.next()) 
-           {               
-                  pat = new Patient(rs.getInt("id"), rs.getString("name"), rs.getString("mobile"), rs.getString("address"), rs.getInt("doctor_id")  , rs.getInt("token_id") ,rs.getDate("date"));
+           if (rs.next()) 
+           {      
+                  
+                  pat = new Patient( rs.getString("name"), rs.getString("mobile"), rs.getString("address"), rs.getInt("doctor_id")  , rs.getInt("token_id") ,rs.getDate("date"));
+                  pat.setPatient_id(rs.getInt("id"));
            }
-
+           else { JOptionPane.showMessageDialog(frame3 , "please Enter valid id..." , "Error Message " ,JOptionPane.ERROR_MESSAGE);}
            fun().close();
 
         }
         catch(SQLException e){
-           JOptionPane.showMessageDialog(null, e);
+          JOptionPane.showMessageDialog(null , e);
         }
         return pat;
         }
@@ -778,13 +817,14 @@ public class Receptionist extends Person implements User{
             // execute the query,
             ResultSet rs = pst.executeQuery(search); 
              //data to be displayed in the table
-           while (rs.next()) 
+           if (rs.next()) 
            {               
                   //p1.setBed_cost(rs.getFloat("bed_cost"));
                  pres = new prescription(rs.getString("describe_medicine"), rs.getDate("date"), rs.getInt("Bed_Needed") , rs.getInt("number_residency_days")); 
 
            }
-
+            else { JOptionPane.showMessageDialog(frame4 , "please Enter valid id..." , "Error Message " ,JOptionPane.ERROR_MESSAGE);}
+          
            fun().close();
 
           }
@@ -801,36 +841,36 @@ public class Receptionist extends Person implements User{
             Statement pst= fun().createStatement();
             // execute the query,
             ResultSet rs = pst.executeQuery(search); 
-            while (rs.next()) 
+           while (rs.next()) 
            {               
                   pat_id = rs.getInt("id");
            }
-           fun().close();
+            fun().close();
       }
         catch(SQLException e){
            JOptionPane.showMessageDialog(null, e);
         }
        return pat_id;
     }
-    private WaitingList retrive_data_inline( int id_patient){
-        WaitingList WL =null; 
-        try{
-            String search = "SELECT * FROM waiting_list WHERE patient_id = '"+id_patient+"'"; 
-            // create the java statement
-            Statement pst= fun().createStatement();
-            // execute the query,
-            ResultSet rs = pst.executeQuery(search); 
-            while (rs.next()) 
-           {               
-                  WL = new WaitingList(rs.getInt("number_patient"),rs.getInt("doctor_id"),rs.getInt("patient_id"));
-           }
+    private int retrive_token_id(){
+      int  token_id = 0;
+       try{
+           String search = "SELECT * FROM waiting_list"; 
+           // create the java statement
+           Statement pst= fun().createStatement();
+           // execute the query,
+           ResultSet rs = pst.executeQuery(search); 
+          while (rs.next()) 
+          {               
+                 token_id = rs.getInt("number_patient");
+          }
            fun().close();
-      }
-        catch(SQLException e){
-           JOptionPane.showMessageDialog(null, e);
-        }
-       return WL;
-        }
+     }
+       catch(SQLException e){
+          JOptionPane.showMessageDialog(null, e);
+       }
+      return token_id;
+   }
     private int get_token_id(int pat_id){
          int  token_id = 0;
         try{
@@ -843,7 +883,8 @@ public class Receptionist extends Person implements User{
            {               
                   token_id = rs.getInt("number_patient");
            }
-           fun().close();
+        else { JOptionPane.showMessageDialog(frame3 , "this patient was finished..." , "Information Message " ,JOptionPane.INFORMATION_MESSAGE);}
+         fun().close();
       }
         catch(SQLException e){
            JOptionPane.showMessageDialog(null, e);
@@ -862,8 +903,9 @@ public class Receptionist extends Person implements User{
            if(rs.next()) 
            {               
                   doc_id = rs.getInt("doctor_id");
-           }
-           fun().close();
+           }            
+           else { JOptionPane.showMessageDialog(frame4 , "please Enter valid id..." , "Error Message " ,JOptionPane.ERROR_MESSAGE);}
+          fun().close();
       }
         catch(SQLException e){
            JOptionPane.showMessageDialog(null, e);
@@ -884,13 +926,12 @@ public class Receptionist extends Person implements User{
             String qSql = "SELECT * FROM waiting_list";
             Statement stm = fun().createStatement();
             ResultSet rs = stm.executeQuery(qSql);
-            while(rs.next())
+           while(rs.next())
             {
                    Object [] row = {rs.getInt("number_patient"), rs.getInt("doctor_id"), rs.getInt("patient_id") };
                     dm.addRow(row);
-            }
-
-            return  dm; 
+            }        
+             return  dm; 
         }   
     public DefaultTableModel  inline_doc(int pat_id)throws SQLException{
             DefaultTableModel dm = new DefaultTableModel();
@@ -903,13 +944,12 @@ public class Receptionist extends Person implements User{
             String qSql = "SELECT * FROM waiting_list WHERE patient_id = '"+pat_id+"'";
             Statement stm = fun().createStatement();
             ResultSet rs = stm.executeQuery(qSql);
-            while(rs.next())
+           while(rs.next())
             {
                    Object [] row ={rs.getInt("number_patient"), rs.getInt("doctor_id"), rs.getInt("patient_id") };
                    dm.addRow(row);
             }
-
-            return  dm; 
+         return  dm; 
      }
 
  
