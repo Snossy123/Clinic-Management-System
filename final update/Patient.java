@@ -10,18 +10,18 @@ import java.sql.Date;
 public class Patient extends Person{
     private int patient_id;
     private Date date;
-    private int token_id;
+    private String token_id;
     private int doctor_id;
     private Boolean need_bed;
     private String disease;
     private String describe_medicine;
     private float medicine_price=0;
-    private float Bed_cost;
-    private float resources_charges;
+    private float Bed_cost=0;
+    private float resources_charges=0;
     private float Cost;
     
             /* constractor*/
-        public Patient( String person_name, String person_mobile, String person_address , int doctor_id , int token_id  ,Date  date ) {
+        public Patient( String person_name, String person_mobile, String person_address , int doctor_id , String token_id  ,Date  date ) {
         super( person_name, person_address,person_mobile);
         this.token_id=token_id;
         this.doctor_id=doctor_id;
@@ -44,7 +44,7 @@ public class Patient extends Person{
     public void setDate(Date date)throws RuntimeException{
         this.date = date;
     }
-      public void setToken_id(int token_id) {
+      public void setToken_id(String token_id) {
         this.token_id = token_id;
     }
     
@@ -86,7 +86,7 @@ public class Patient extends Person{
         return date;
     }
      
-    public int get_token_id() {
+    public String get_token_id() {
         return token_id;
     }
 
@@ -120,7 +120,7 @@ public class Patient extends Person{
     }
     
     public void reset_token_id(){
-        this.setToken_id(0);
+        this.setToken_id("0");
     }
 
     public int getPatient_id() {

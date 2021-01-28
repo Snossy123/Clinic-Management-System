@@ -19,7 +19,7 @@ public class prescription {
     private int bed_needed ;
     private int patient_id ;
 
-    public prescription(int patient_id, String disease , String describe_medicine, int bed_needed, int num_residency_days , Date date) {
+    public prescription(int patient_id , Date date , String describe_medicine, int bed_needed, int num_residency_days , String disease ) {
         this.describe_medicine = describe_medicine;
         this.disease = disease;
         this.num_residency_days = num_residency_days;

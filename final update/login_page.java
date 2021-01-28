@@ -1,13 +1,11 @@
 package clinic;
 
 
-import java.awt.Color;
-import java.awt.Font;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
 import com.mysql.jdbc.Connection;
-import java.awt.Toolkit;
 import java.sql.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -53,6 +51,10 @@ public class login_page extends JFrame implements ActionListener {
              JButton loginButton;
              static JLabel hiddenWrongLogin;
     public void LoginPage(){
+        //img
+    ImageIcon icon = new ImageIcon("ig.jpg");
+    JLabel img = new JLabel(icon);
+    img.setBounds(0, -40, 500, 540);
         //        this Variable is used to 
         //        choose the role of the user(admin,doctor,receptionist)
         //        and then take the user to the page of it's role
@@ -61,8 +63,8 @@ public class login_page extends JFrame implements ActionListener {
         Job="";
         logInFrame=new JFrame();
         logInFrame.setTitle("Login Page");
-        logInFrame.setSize(500,600);
-        logInFrame.setLocation(600,100);
+        logInFrame.setSize(500,500);
+        logInFrame.setLocation(400,120);
         logInFrame.setResizable(false);
         logInFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         logInFrame.setLayout(null);
@@ -73,44 +75,44 @@ public class login_page extends JFrame implements ActionListener {
         logInFrame.add(loginHeaderLabel);
         
         usernameLabel=new JLabel("Username: ");
-        usernameLabel.setBounds(110,120,110,30);
+        usernameLabel.setBounds(50,120,110,30);
         usernameLabel.setFont(new Font("Arial",Font.BOLD,20));
         logInFrame.add(usernameLabel);
         
         usernameTextField=new JTextField();
-        usernameTextField.setBounds(230,115,230,40);
+        usernameTextField.setBounds(200,115,230,40);
         usernameTextField.setFont(new Font("Arial", Font.ROMAN_BASELINE,20));
         usernameTextField.setBorder(BorderFactory.createEmptyBorder(10,10,10,10));
         logInFrame.add(usernameTextField);
         
         passwordLabel=new JLabel("Password: ");
-        passwordLabel.setBounds(110,220,200,30);
+        passwordLabel.setBounds(50,220,200,30);
         passwordLabel.setFont(new Font("Arial",Font.BOLD,20));
         logInFrame.add(passwordLabel);        
         
         passwordTextField=new JPasswordField();
-        passwordTextField.setBounds(230,215,230,40);
+        passwordTextField.setBounds(200,215,230,40);
         passwordTextField.setFont(new Font("Arial", Font.ROMAN_BASELINE,20));
         passwordTextField.setBorder(BorderFactory.createEmptyBorder(10,10,10,10));
         logInFrame.add(passwordTextField);       
         
         jobLabel=new JLabel("User job: ");
-        jobLabel.setBounds(110,310,200,40);
+        jobLabel.setBounds(50,310,200,40);
         jobLabel.setFont(new Font("Arial",Font.BOLD,20));
         logInFrame.add(jobLabel);
         
         adminRadioButton=new JRadioButton("Admin");
-        adminRadioButton.setBounds(240,315,80,30);
+        adminRadioButton.setBounds(160,315,80,30);
         adminRadioButton.setFont(new Font("Arial",Font.ROMAN_BASELINE,20));
         logInFrame.add(adminRadioButton);
 
         doctorRadioButton=new JRadioButton("Doctor");
-        doctorRadioButton.setBounds(350,315,90,30);
+        doctorRadioButton.setBounds(390,315,90,30);
         doctorRadioButton.setFont(new Font("Arial",Font.ROMAN_BASELINE,20));
         logInFrame.add(doctorRadioButton);
         
         receptionistRadioButton=new JRadioButton("Receptionist");
-        receptionistRadioButton.setBounds(280,345,140,30);
+        receptionistRadioButton.setBounds(245,315,140,30);
         receptionistRadioButton.setFont(new Font("Arial",Font.ROMAN_BASELINE,20));
         logInFrame.add(receptionistRadioButton);
         
@@ -120,7 +122,7 @@ public class login_page extends JFrame implements ActionListener {
         jobButtonGroup.add(receptionistRadioButton);
 
         loginButton=new JButton("Login");
-        loginButton.setBounds(200,420,100,30);
+        loginButton.setBounds(200,400,100,30);
         loginButton.setFont(new Font("Arial",Font.BOLD,20));
         logInFrame.add(loginButton);
         
@@ -129,8 +131,9 @@ public class login_page extends JFrame implements ActionListener {
         hiddenWrongLogin.setFont(new Font("Arial",Font.BOLD,15));
         hiddenWrongLogin.setForeground(Color.red);
         hiddenWrongLogin.setVisible(false);
-        logInFrame.add(hiddenWrongLogin);        
+        logInFrame.add(hiddenWrongLogin); 
         
+        logInFrame.add(img);
         loginButton.addActionListener(this);
         adminRadioButton.addActionListener(this);
         logInFrame.setVisible(true);
