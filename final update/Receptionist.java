@@ -51,6 +51,8 @@ public class Receptionist extends Person implements User{
     //this constractor user to make frame to receptionist  
     public Receptionist(String user_name, String user_password) throws SQLException {
     
+        this.user_name = user_name;
+        this.user_password = user_password;
 
 //Gui of home page of receptionist
     frame.setSize(500, 500);

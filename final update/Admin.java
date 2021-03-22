@@ -47,8 +47,8 @@ public class Admin extends Person implements User
           //this constractor user to make frame to receptionist  
         public Admin(String user_name, String user_password) throws SQLException {
 
-this.user_name = user_name;
-this.user_password = user_password;
+        this.user_name = user_name;
+        this.user_password = user_password;
 //Gui of home page of receptionist
     frame.setSize(500, 500);
     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
